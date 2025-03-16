@@ -9,4 +9,17 @@ Contributions are welcome! Please read the [contribution guidelines](CONTRIBUTIN
 ### Contributors
 
 <!-- readme: collaborators,contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/JeromeWolff">
+                    <img src="https://avatars.githubusercontent.com/u/34198274?v=4" width="100;" alt="JeromeWolff"/>
+                    <br />
+                    <sub><b>Jerome Wolff</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: collaborators,contributors -end -->
