@@ -1,0 +1,40 @@
+name: "Setup and run Gradle"
+description: "Reusable workflow to setup and run Gradle"
+
+inputs:
+  gradle-command-title:
+    description: "The step title to use for the Gradle command"
+    default: "Run Gradle"
+    required: true
+  gradle-command:
+    description: "The Gradle command to run"
+    default: "test"
+    required: true
+  java-distribution:
+    description: "The Java distribution to use"
+    default: "temurin"
+    required: true
+  java-version:
+    description: "The Java version to use"
+    default: "22"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Checkout repository"
+      uses: actions/checkout@v4
+    - name: "Setup Java JDK ${{ inputs.java-version }}"
+      uses: actions/setup-java@v4
+      with:
+        distribution: ${{ inputs.java-distribution }}
+        java-version: ${{ inputs.java-version }}
+        cache: 'gradle'
+    - name: "Ensure Gradle permission"
+      run: "chmod +x gradlew"
+      shell: "bash"
+    - name: "Setup Gradle"
+      uses: gradle/actions/setup-gradle@v4
+    - name: "Run Gradle ${{ inputs.gradle-command }}"
+      run: "./gradlew ${{ inputs.gradle-command }}"
+      shell: "bash"
