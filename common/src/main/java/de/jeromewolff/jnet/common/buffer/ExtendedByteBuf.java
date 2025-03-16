@@ -4,14 +4,8 @@ import com.google.common.base.Preconditions;
 import de.jeromewolff.jnet.common.util.Files;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.Delegate;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.InetAddress;
@@ -25,11 +19,12 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ExtendedByteBuf {
+public final class ExtendedByteBuf extends ProxyByteBuf {
   private static final Charset UTF_8 = StandardCharsets.UTF_8;
-  @Delegate
-  private final ByteBuf byteBuf;
+
+  private ExtendedByteBuf(ByteBuf byteBuf) {
+    super(byteBuf);
+  }
 
   public void writeString(String value, Charset charset) {
     var bytes = value.getBytes(charset);
