@@ -26,10 +26,10 @@ subprojects {
     implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
     implementation("com.google.guava:guava:33.4.0-jre")
-    mockitoAgent("org.mockito:mockito-core:5.16.0") {
+    mockitoAgent("org.mockito:mockito-core:5.16.1") {
       isTransitive = false
     }
-    testImplementation("org.mockito:mockito-core:5.16.0")
+    testImplementation("org.mockito:mockito-core:5.16.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-params:5.12.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.12.1")
