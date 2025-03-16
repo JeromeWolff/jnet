@@ -1,0 +1,30 @@
+name: "Dependency Submission"
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  submission:
+    name: "Dependency Submission"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v4
+      - name: "Setup JDK 21"
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+          cache: 'gradle'
+      - name: "Ensure Gradle permission"
+        run: "chmod +x gradlew"
+        shell: "bash"
+      - name: "Generate and submit dependency graph"
+        uses: gradle/actions/dependency-submission@v4
+        env:
+          SILENCY_REPO_USERNAME: ${{ secrets.SILENCY_REPO_USERNAME }}
+          SILENCY_REPO_PASSWORD: ${{ secrets.SILENCY_REPO_PASSWORD }}
