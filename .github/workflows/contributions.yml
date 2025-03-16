@@ -6,6 +6,9 @@ on:
 jobs:
   contributions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: "Generate contribution List"
         uses: akhilmhdh/contributors-readme-action@v2.3.10
