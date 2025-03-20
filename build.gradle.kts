@@ -25,7 +25,7 @@ subprojects {
     compileOnly("org.projectlombok:lombok:1.18.36")
     implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
-    implementation("com.google.guava:guava:33.4.0-jre")
+    implementation("com.google.guava:guava:33.4.5-jre")
     mockitoAgent("org.mockito:mockito-core:5.16.1") {
       isTransitive = false
     }
